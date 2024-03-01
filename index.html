@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Clipboard API</title>
+	</head>
+	<body>
+		<input type="text" name="text" id="field" />
+        <button onclick="writeToClipboard">Copy</button>
+
+        <script>
+            const text = document.getElementById('field').value;
+            const writeToClipboard = async () => {
+                try {
+                    await navigator.clipboard.writeText(text);
+                } catch (error) {
+                    console.log(error);
+                }
+            };
+
+            const readFromClipboard = async () => {
+            try {
+
+                const clipboardText = await navigator.clipboard.readText();
+
+                console.log(clipboardText);
+
+            } catch (error) {
+
+                console.log(error);
+
+            }
+
+};
+        </script>
+	</body>
+</html>
